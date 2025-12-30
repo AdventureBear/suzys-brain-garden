@@ -118,13 +118,10 @@ module.exports = function(eleventyConfig) {
   // });
     
 
-   // Creates custom collection "results" for search
-   // TODO: Fix searchFilter for Eleventy v3 compatibility (templateContent async issue)
-   // const searchFilter = require("./filters/searchFilter");
-   // eleventyConfig.addFilter("search", searchFilter);
-   eleventyConfig.addCollection("results", collection => {
-    return [...collection.getFilteredByGlob("**/*.md")];
-   });
+   // Creates custom collection "searchIndex" for search functionality
+   // Uses async-compatible collection for Eleventy v3 (templateContent is async)
+   const searchIndex = require("./lib/collections/searchIndex");
+   eleventyConfig.addCollection("searchIndex", searchIndex);
   
    // Creates custom collection "menuItems"
    eleventyConfig.addCollection("menuItems", collection =>
