@@ -10,4 +10,4 @@ I tried to mimic him, but the tails of my white coat quickly became soaked. When
 
 In contrast to the placid, peaceful cove in which Herodias earned his living, my world was chaotic and stressed. While Herodias performed his work with precise measured strides amongst the cool muddy flats of his natural refuge, my work was done in staccato bursts of irregularly irregular demands from patients, nurses, and lab technicians.
 
-Herodias was at peace with his world and blended in perfectly. I stood apart from my world, wishing I could surrender myself to the muddy oasis that_Ardea herodias_ called home.
+Herodias was at peace with his world and blended in perfectly. I stood apart from my world, wishing I could surrender myself to the muddy oasis that _Ardea herodias_ called home.
