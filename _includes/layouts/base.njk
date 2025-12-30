@@ -20,9 +20,9 @@
         <main id="main" class="dark:bg-gray-900 pt-16 sm:pt-18 md:pt-48">
       {% else %}
         <main id="main" class="dark:bg-gray-900 pt-16 sm:pt-18 md:pt-20 md:pl-64 lg:pl-72">
-      {% endif %}     
-        {{ layoutContent | safe }} 
-        {% include "components/footer.njk" %} 
+      {% endif %}
+        {{ content | safe }}
+        {% include "components/footer.njk" %}
         </main>
     </div>
   </body>

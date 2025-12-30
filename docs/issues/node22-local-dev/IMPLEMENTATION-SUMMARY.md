@@ -73,6 +73,24 @@
 
 ---
 
+## Critical Fixes
+
+### 1. **Eleventy v3 Breaking Change: `layoutContent` → `content`**
+
+**THE BIG ONE** - This was preventing ALL page content from rendering!
+
+**Issue**: In Eleventy v3, the variable name for passing content between layouts changed from `{{ layoutContent | safe }}` to `{{ content | safe }}`.
+
+**Files fixed**:
+- `_includes/layouts/base.njk:24` - Changed `layoutContent` to `content`
+- `_includes/layouts/page.njk:42` - Changed `layoutContent` to `content`
+- `_includes/experimental/blog/layouts/blog.njk:14` - Changed `layoutContent` to `content`
+- `_includes/experimental/blog/layouts/post.njk:41` - Changed `layoutContent` to `content`
+
+**Result**: ✅ All page content now renders correctly!
+
+---
+
 ## Temporary Workarounds
 
 ### 1. Search Functionality Disabled

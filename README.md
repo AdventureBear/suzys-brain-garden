@@ -1,74 +1,195 @@
-# Spacebook
+# Suzy's Brain Garden
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/68791233-b2d6-4a86-8c42-e654e112a157/deploy-status)](https://app.netlify.com/sites/spacebook-app/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/YOUR_BADGE_ID/deploy-status)](https://app.netlify.com/sites/suzys-brain-garden/deploys)
 
-Create your own spacebook and customize it to your needs. Spacebooks are speedy to set up, free, and 100% open source. Spacebooks are modern notebooks you can use to create documentation, sketch out new ideas, build a simple website, or whatever suits your fancy. 
+My personal digital garden and notebook built with [Eleventy](https://www.11ty.dev/) and [Tailwind CSS](https://tailwindcss.com/).
 
----
-
-<p align="center">
-<strong><big>Demo and documentation:</big></strong><br /> 
-</p>
-
-<p align="center">
-<strong>https://spacebook.app</strong> <br />
-</>
-
-<p align="center">
-🙋 💥 👩🏽‍🚀 🚀 👨‍🚀 🛰️
-</p>
+**Live Site:** https://suzys-brain-garden.netlify.app
 
 ---
 
-## Contributing
+## About
 
-If you want to contribute or make fixes to spacebook, it is best to fork this repository directly and submit pull requests against it. If you spot a typo on the demo/documentation site, you can also open a fork directly from the edit button on the top of each page.
+This is my personal digital space for collecting thoughts, ideas, and knowledge. Built using the [Spacebook](https://spacebook.app) template by [@broeker](https://github.com/broeker/spacebook).
 
-## Install spacebook
+**Note:** This is a personal site with my own content. If you're looking for the Spacebook template to build your own site, visit [spacebook.app](https://spacebook.app) or the [Spacebook GitHub repo](https://github.com/broeker/spacebook).
 
-If you want to quickly install for local testing follow the instructions below:
+## Tech Stack
 
-### Requirements
+- **Static Site Generator:** [Eleventy](https://www.11ty.dev/) v3.1.2
+- **CSS Framework:** [Tailwind CSS](https://tailwindcss.com/) v3.4
+- **JavaScript Framework:** [Alpine.js](https://alpinejs.dev/) v3
+- **Markdown Parser:** [markdown-it](https://github.com/markdown-it/markdown-it) with multiple plugins
+- **Hosting:** [Netlify](https://www.netlify.com/)
 
-You must be running **Node version 12 or higher** due to the Tailwind 2.0 release. I recommend using NVM to easily manage your Node versions if you need to switch back and forth between older versions.
+## Requirements
 
-- [Node](https://nodejs.org/)
-- [NVM](https://github.com/nvm-sh/nvm) (optional)
+**You must be running Node.js version 22 or higher.**
 
-**To find your current node version:**
+- [Node.js](https://nodejs.org/) v22+
+- [NVM](https://github.com/nvm-sh/nvm) (recommended for managing Node versions)
 
-```
+**Check your current Node version:**
+
+```bash
 node --version
 ```
 
-### Step one
+## Local Development
 
-```
-git clone https://github.com/broeker/spacebook
-```
+### 1. Install dependencies
 
-### Step two
+From the project root:
 
-Install the site and run an initial build command:
-
-```
-cd spacebook
-
+```bash
 npm install
-
-npm run build (only necessary the first time!)
 ```
 
-_If you get errors here, double check your node version!_
+### 2. Start the development server
 
-### Step three
-
-Now spin up your local server to see your site!
-
-```
-npm run start
+```bash
+npm start
+# or
+npm run dev
 ```
 
-This command will start a local server and you'll be able to work on your site with hot reloads and some nice Browsersync features. 💥
+This will start a local server at http://localhost:8080/ with hot reload enabled.
 
---- 
+### 3. Build for production
+
+```bash
+npm run build
+```
+
+This generates optimized files in the `_site` directory.
+
+## Project Structure
+
+```
+suzys-brain-garden/
+├── _data/              # Global data files
+│   └── site.json      # Site configuration
+├── _includes/          # Layout templates and components
+│   ├── layouts/       # Page layouts (Nunjucks)
+│   └── components/    # Reusable components
+├── content/            # Your content
+│   ├── pages/         # Markdown pages
+│   └── images/        # Image assets
+├── styles/             # Tailwind CSS
+├── _site/              # Generated site (do not edit)
+└── .eleventy.js       # Eleventy configuration
+```
+
+## Writing Content
+
+### Creating a New Page
+
+1. Create a new `.md` file in `content/pages/`
+2. Add frontmatter with title and navigation info:
+
+```markdown
+---
+title: My Page Title
+date: Last Modified
+permalink: /my-page/
+eleventyNavigation:
+  key: MyPage
+  order: 1
+  title: My Page Title
+---
+
+Your content here...
+```
+
+### Adding Images
+
+Place images in `content/images/` and reference them in markdown:
+
+```markdown
+![Alt text](/content/images/your-image.jpg)
+```
+
+## Configuration
+
+### Site Settings
+
+Edit `_data/site.json` to customize:
+
+- Site name and description
+- Navigation style (horizontal/vertical)
+- Enable/disable features (dark mode, search, comments, etc.)
+- GitHub repository URL
+- Social links
+
+### Styling
+
+Tailwind CSS configuration is in `tailwind.config.js` at the project root.
+
+Custom styles are in `styles/tailwind.css`.
+
+## Netlify Deployment
+
+### Build Settings
+
+The site is configured to deploy automatically to Netlify when pushing to the `main` branch.
+
+**Netlify Build Configuration** (from `netlify.toml`):
+
+- **Build Command:** `npm run build`
+- **Publish Directory:** `_site`
+- **Node Version:** 22
+
+### Environment Variables
+
+No environment variables are required for basic deployment.
+
+### Manual Deploy
+
+To manually deploy to Netlify:
+
+1. Push your changes to the `main` branch
+2. Netlify will automatically build and deploy
+
+Or use the Netlify CLI:
+
+```bash
+npm install -g netlify-cli
+netlify deploy --prod
+```
+
+## Recent Upgrades (December 2025)
+
+This site was recently upgraded from Node 14 to Node 22 and Eleventy v0.11 to v3.1.2. Major changes include:
+
+- **Eleventy:** 0.11.1 → 3.1.2
+- **Tailwind CSS:** 2.0.2 → 3.4.0
+- **Alpine.js:** 2.7.3 → 3.14.0
+- **Node.js:** 14 → 22
+
+### Critical Breaking Changes Fixed
+
+**Eleventy v3 Layout Variable Change:**
+- Changed `{{ layoutContent | safe }}` → `{{ content | safe }}` in all layout files
+- This was preventing all page content from rendering
+
+**Deprecated Package Replacements:**
+- `html-minifier` → `html-minifier-terser`
+- `uglify-es` → `terser`
+
+For detailed upgrade notes, see `docs/issues/node22-local-dev/IMPLEMENTATION-SUMMARY.md`.
+
+## Known Issues
+
+- **Search functionality** is currently disabled while being updated for Eleventy v3 async compatibility
+
+## Credits
+
+Built with [Spacebook](https://spacebook.app) by [@broeker](https://github.com/broeker/spacebook).
+
+## License
+
+This site's content is my own. The Spacebook template is open source.
+
+---
+
+Made with ❤️ by Suzy
