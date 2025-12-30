@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing Prompts</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body>
+    <div class="container" x-data="promptApp()" x-init="init()">
+        <header>
+            <h1>Writing Prompts</h1>
+            <p class="subtitle">Attention-first prompts for your brain garden</p>
+        </header>
+
+        <!-- Prompt Display -->
+        <div class="prompt-section">
+            <div class="prompt-display">
+                <p class="prompt-text" x-text="currentPrompt"></p>
+                <div class="prompt-controls">
+                    <button @click="previousPrompt()" class="btn btn-secondary">← Previous</button>
+                    <span class="prompt-counter" x-text="`${currentIndex + 1} of ${prompts.length}`"></span>
+                    <button @click="nextPrompt()" class="btn btn-secondary">Next →</button>
+                    <button @click="randomPrompt()" class="btn btn-secondary">🎲 Random</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Writing Area -->
+        <div class="writing-section">
+            <div class="editor-header">
+                <h2>Your Response</h2>
+                <div class="word-count">
+                    <span x-text="wordCount"></span> words |
+                    <span x-text="charCount"></span> characters
+                </div>
+            </div>
+            <textarea
+                x-model="content"
+                @input="updateCounts()"
+                placeholder="Start writing... (Markdown supported)"
+                class="editor"
+                rows="20"
+            ></textarea>
+        </div>
+
+        <!-- Save Section -->
+        <div class="save-section">
+            <div class="folder-selection">
+                <label>
+                    <span>Folder:</span>
+                    <select x-model="selectedFolder" @change="folderChanged()">
+                        <option value="">Select subfolder (optional)</option>
+                        <option x-show="folders.length === 0" disabled>No subfolders yet</option>
+                        <template x-for="folder in folders" :key="folder">
+                            <option :value="folder" x-text="folder"></option>
+                        </template>
+                        <option value="__new__">+ Create new subfolder</option>
+                    </select>
+                </label>
+
+                <!-- New subfolder input -->
+                <div x-show="selectedFolder === '__new__'" class="new-subfolder">
+                    <input
+                        type="text"
+                        x-model="newSubfolderName"
+                        placeholder="Enter subfolder name"
+                        class="input"
+                    >
+                </div>
+            </div>
+
+            <div class="save-controls">
+                <button @click="save()" :disabled="saving || !content.trim()" class="btn btn-primary">
+                    <span x-show="!saving">💾 Save</span>
+                    <span x-show="saving">Saving...</span>
+                </button>
+                <button @click="clear()" class="btn btn-secondary">Clear</button>
+            </div>
+
+            <!-- Status message -->
+            <div x-show="statusMessage" class="status-message" :class="statusType">
+                <p x-text="statusMessage"></p>
+                <small x-show="savedFilePath" x-text="'Saved to: ' + savedFilePath"></small>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <details>
+                <summary>How to use this tool</summary>
+                <ul>
+                    <li>Browse prompts using Next/Previous or get a random one</li>
+                    <li>Write your response in markdown</li>
+                    <li>Optionally select a subfolder (or create a new one)</li>
+                    <li>Click Save - the file will be created in your content/writing/ folder</li>
+                    <li>Files are automatically added to your Eleventy site</li>
+                    <li>Commit and push when ready to publish</li>
+                </ul>
+            </details>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
