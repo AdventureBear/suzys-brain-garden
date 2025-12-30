@@ -11,21 +11,20 @@ This file tracks ideas for enhancing Suzy's Brain Garden functionality and featu
 ### High Priority
 
 #### 1. Reorganize Project Structure - Move Filters to /lib
-**Status**: New structure started with /lib/collections
-**Current state**:
-- `/filters/` directory exists at root level
-- `/lib/collections/` created for new search index collection
-- Inconsistent organization
+**Status**: ✅ COMPLETED (2025-12-29)
+**What was done**:
+- Removed legacy `/filters/searchFilter.js` (no longer used after Eleventy v3 upgrade)
+- Removed empty `/filters/` directory
+- Cleaned up root directory structure
 
-**What needs to happen**:
-- Move `/filters/` → `/lib/filters/`
-- Update `.eleventy.js` to require from new location
-- Consider moving other Eleventy utilities (shortcodes, transforms) to `/lib/` if they exist
-- Update documentation to reflect new structure
+**Outcome**:
+- Cleaner root directory achieved
+- Removed confusing legacy code
+- Current organization pattern documented:
+  - Complex collections → `/lib/collections/` (e.g., searchIndex)
+  - Simple filters/shortcodes/transforms → inline in `.eleventy.js`
 
-**Why it matters**: Cleaner root directory, better organization for future growth, consistent structure
-
-**Note**: Search functionality was fixed in PR #[TBD] using the new /lib/collections structure
+**See**: PR #[TBD], docs/issues/2-reorganize-filters/
 
 ---
 
