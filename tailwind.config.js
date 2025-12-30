@@ -1,5 +1,4 @@
 module.exports = {
-  important: true,
   content: [
     "./_includes/**/*.{html,njk,js,md}",
     "./content/**/*.{html,njk,js,md}",
