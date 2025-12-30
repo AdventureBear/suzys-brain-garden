@@ -34,11 +34,9 @@
   .prose ul.spacelog  {
     @apply list-none -ml-6;
   }
-  .prose ul.contains-task-list .task-list-item,
-  .prose ul.spacelog {
-    ::before {
-      @apply hidden;
-    }
+  .prose ul.contains-task-list .task-list-item::before,
+  .prose ul.spacelog::before {
+    @apply hidden;
   }
 
   /* Define blockquotes and some standard callout blocks */
