@@ -45,7 +45,39 @@ This file tracks ideas for enhancing Suzy's Brain Garden functionality and featu
 
 **See**: PR #[TBD], docs/issues/3-optimize-tailwind/
 
-#### 3. Comprehensive Feature Testing
+#### 3. Writing Prompt System (Idea #41)
+**Status**: ✅ COMPLETED (2025-12-30)
+**What was done**:
+- Built standalone local-only Express app for writing prompts
+- Created 115 curated "attention-first" prompts
+- Implemented search functionality to find prompts instantly
+- Added live markdown preview with Edit/Split/Preview modes
+- Built-in markdown reference guide (modal)
+- Favorites system with star/unstar capability
+- Usage tracking (records which prompts used and when)
+- Smart random selection (avoids recently used prompts)
+- Auto-save drafts to localStorage
+- Automatic file creation with proper frontmatter
+- Folder selection with ability to create new subfolders
+- Dark mode support
+
+**Outcome**:
+- Fully functional local development tool at `localhost:3001`
+- Zero impact on Netlify deployment (dev-only)
+- 115 prompts ready to use
+- Seamless integration with `npm start`
+- Files auto-created in `content/writing/[subfolder]/`
+- Phase 1 & Phase 2 features complete
+
+**See**: PR #5, docs/issues/4-writing-prompt-system/, tools/writing-prompts/
+
+**Future Enhancements** (see New Ideas for 2025 section):
+- Phase 3: Automation features
+- Phase 4: AI-enhanced prompts
+
+---
+
+#### 4. Comprehensive Feature Testing
 **Manual testing needed for**:
 - Dark mode toggle functionality
 - Navigation system
@@ -191,283 +223,52 @@ Based on the Node 22 / Eleventy v3 upgrade, here are insights for future work:
 
 ---
 
-## Latest Ideas: Writing Prompt System
+## New Ideas for 2025
 
-### 41. Built-in Writing Prompt System
-**Idea**: Create an integrated prompting system to encourage regular writing and content creation
+### Writing Prompt System Enhancements
 
-**User Need**: "A built-in prompting system for the user (me) to open a writing window and respond to a prompt. These could be pregenerated prompts pulled from a data json, and/or an AI integrated prompting idea. I currently have a general description of the types of prompts I like."
+*Note: Phase 1 & 2 of the Writing Prompt System are complete (see completed items above). These are future enhancement ideas.*
 
-#### Possible Mechanics & Approaches
+#### 41a. Writing Prompt System - Phase 3: Automation
+**Idea**: Add automation features to streamline the writing workflow
 
-**A. Static Prompt Library Approach**
-- Store prompts in `_data/prompts.json` organized by category:
-  - Reflective prompts
-  - Technical learning prompts
-  - Creative prompts
-  - Health/medical journaling prompts
-  - Maker/project prompts
-- Add a `/write` page with prompt display
-- Click "New Prompt" to get random prompt from your preferred categories
-- "Start Writing" button opens modal or navigates to writing interface
-- Save preferences for prompt types in localStorage
+**Features**:
+- Git commit automation after save (optional setting)
+- Scheduled daily/weekly prompts with notifications
+- Writing stats dashboard:
+  - Writing streak tracking (consecutive days)
+  - Total responses, word counts over time
+  - Most used prompts, favorite categories
+  - Monthly writing calendar (heatmap)
+  - Productivity trends and insights
+- Export all prompt responses to JSON/markdown archive
+- Prompt response archive page showing all past writings
 
-**B. Daily Prompt System**
-- One prompt per day (deterministic based on date)
-- Homepage shows today's prompt
-- Archive of past prompts with your responses
-- Streak tracking for consecutive days writing
-- Could combine with existing content to show "On this day, you wrote..."
+**Why valuable**: Reduces even more friction, adds gamification to encourage consistent writing habits
 
-**C. Alpine.js Writing Modal**
-- Lightweight, no page reload needed
-- Click prompt → modal opens with:
-  - Prompt text at top
-  - Markdown textarea
-  - Preview pane (live markdown rendering)
-  - Save as draft / Publish buttons
-- Uses Alpine.js (already in stack)
-- Could use localStorage for drafts
-- Integration with existing markdown-it plugins
+**Implementation notes**: Could use node-notifier for local notifications, Chart.js for visualizations
 
-**D. AI-Enhanced Prompting (Future)**
-- Analyze your existing content to understand themes
+#### 41b. Writing Prompt System - Phase 4: AI Enhancement
+**Idea**: Use AI to generate personalized prompts based on your content
+
+**Features**:
+- Analyze existing brain garden content to understand themes and patterns
 - Generate personalized prompts based on:
-  - Topics you haven't written about lately
+  - Topics you haven't written about recently
   - Questions left open in previous posts
   - Follow-ups to maker projects
   - Connections between disparate notes
-- Could use Claude API or similar
-- Fallback to static prompts if API unavailable
+  - Your writing style and preferences
+- Smart prompt suggestions: "You wrote about X last month, have you thought about Y?"
+- Topic gap analysis: identify areas of the garden that need more content
+- Content relationship suggestions (e.g., "This connects to your post about...")
+- Claude API integration with fallback to static prompts
 
-**E. Prompt Categories & Customization**
-Structure for `_data/prompts.json`:
-```json
-{
-  "categories": {
-    "reflective": {
-      "name": "Reflective",
-      "enabled": true,
-      "prompts": [
-        "What challenged your thinking this week?",
-        "Describe a moment when you changed your mind.",
-        "What are you learning slowly?"
-      ]
-    },
-    "technical": {
-      "name": "Technical Learning",
-      "enabled": true,
-      "prompts": [
-        "Explain a concept you recently understood.",
-        "What problem did you solve today?",
-        "Document a technique worth remembering."
-      ]
-    },
-    "creative": {
-      "name": "Creative",
-      "enabled": true,
-      "prompts": [
-        "What if you could redesign...",
-        "Combine two unrelated ideas:",
-        "What would you build with unlimited time?"
-      ]
-    },
-    "health": {
-      "name": "Health & Medical",
-      "enabled": false,
-      "prompts": [
-        "How are you feeling today?",
-        "What patterns are you noticing?",
-        "What questions do you have for your care team?"
-      ]
-    }
-  },
-  "user_preferences": {
-    "frequency": "daily",
-    "notification_time": "09:00",
-    "auto_save_drafts": true
-  }
-}
-```
+**Why valuable**: Keeps prompts fresh and personalized, helps maintain interconnected knowledge garden
 
-**F. Writing Interface Options**
-
-*Option 1: Modal Overlay (Recommended for MVP)*
-- Click prompt → Alpine.js modal opens
-- Distraction-free writing area
-- Basic markdown toolbar (bold, italic, links, lists)
-- Character/word count
-- Save creates new .md file in `content/writing/prompts/`
-- Auto-generate frontmatter with prompt, date, tags
-
-*Option 2: Dedicated /write Page*
-- Full-page writing interface
-- Prompt displayed at top
-- Split view: markdown editor + live preview
-- More space for longer responses
-- Could integrate with existing layouts
-
-*Option 3: Hybrid Approach*
-- Start in modal for quick capture
-- "Expand" button opens full page for longer writing
-- Best of both worlds
-
-**G. File Generation & Organization**
-
-When user saves a prompt response:
-```markdown
----
-title: "Response to: [Prompt Text]"
-date: 2025-12-30
-prompt: "What challenged your thinking this week?"
-promptCategory: reflective
-tags: [prompt-response, reflective]
-layout: writing
----
-
-[User's response here]
+**Implementation notes**: Would require Claude API key, content analysis scripts
 
 ---
-
-**Prompt**: What challenged your thinking this week?
-**Category**: Reflective
-**Date**: December 30, 2025
-```
-
-Auto-save to: `content/writing/prompts/YYYY-MM-DD-prompt-slug.md`
-
-**H. Progress Tracking Features**
-- Dashboard showing:
-  - Writing streak (consecutive days)
-  - Total prompt responses
-  - Favorite prompt categories
-  - Word count trends
-  - Most productive writing times
-- Visualizations using Chart.js or D3
-- Monthly writing calendar (heatmap style)
-
-**I. Integration Points**
-
-*With Existing Features*:
-- Prompts could trigger creation in existing collections (writing, maker)
-- Use existing markdown-it plugins for rendering
-- Leverage Alpine.js for interactivity
-- Dark mode support automatically
-- Search integration (prompts searchable)
-- Could link related prompt responses automatically
-
-*New Pages Needed*:
-- `/write` - Main prompt interface
-- `/prompts` - Browse all available prompts
-- `/my-responses` - Archive of responses
-- `/writing-stats` - Progress dashboard
-
-**J. Technical Implementation Phases**
-
-*Phase 1: MVP (Simplest Approach)*
-1. Create `_data/prompts.json` with curated prompts
-2. Build `/write` page showing random prompt
-3. Simple textarea for response
-4. "Save" creates markdown file via localStorage → manual copy
-5. No database needed, static site friendly
-
-*Phase 2: Enhanced UX*
-1. Add Alpine.js modal for better UX
-2. Live markdown preview
-3. Auto-save drafts to localStorage
-4. Prompt history (which prompts shown when)
-5. Category filtering
-
-*Phase 3: Automation*
-1. Build script to generate markdown files from localStorage
-2. Git commit automation for new responses
-3. Netlify function to handle saves (optional)
-4. Schedule prompts (daily, weekly)
-
-*Phase 4: AI Enhancement*
-1. Analyze existing content
-2. Generate personalized prompts
-3. Suggest connections to previous writing
-4. Topic gap analysis
-
-**K. User Workflow Examples**
-
-*Morning Routine Workflow*:
-1. Visit site, see today's prompt on homepage
-2. Click "Respond to Prompt"
-3. Modal opens with writing interface
-4. Write response (auto-saves to localStorage)
-5. Click "Publish" → creates markdown file
-6. Content appears in "Writing" section
-7. Prompt marked as completed for today
-
-*Browse & Choose Workflow*:
-1. Visit `/prompts` page
-2. Browse categories (reflective, technical, creative, health)
-3. Click interesting prompt
-4. Same writing interface opens
-5. Save as draft or publish immediately
-
-*Streak Maintenance Workflow*:
-1. Check writing stats dashboard
-2. See 7-day streak, don't want to break it
-3. Quick prompt response to maintain streak
-4. Gamification encourages consistency
-
-**L. Mobile Considerations**
-- Responsive textarea
-- Touch-friendly UI
-- Save drafts for later (when back at computer)
-- Push notifications for daily prompts (PWA)
-- Simplified interface for mobile
-
-**M. Privacy & Control**
-- All prompts stored locally (no external service)
-- Drafts stay local until you publish
-- Can delete/edit responses anytime
-- Export all responses as JSON/markdown
-- No tracking, completely private
-
-**N. Potential Challenges & Solutions**
-
-*Challenge*: Static site can't dynamically save files
-*Solution*: Use localStorage + manual/automated git commit, or Netlify function
-
-*Challenge*: Keeping prompts fresh and relevant
-*Solution*: Regular prompt curation, community contributions, AI generation
-
-*Challenge*: Not overwhelming the user
-*Solution*: Configurable frequency, ability to skip/snooze prompts
-
-*Challenge*: Mobile writing experience
-*Solution*: Progressive enhancement, works great on desktop, functional on mobile
-
-**O. Why This Is Valuable**
-- Reduces friction in content creation
-- Provides inspiration when you're stuck
-- Builds consistent writing habit
-- Creates regular content for the garden
-- Personalized to your interests and goals
-- Works within existing static site architecture
-- Leverages tools already in stack (Alpine.js, markdown-it)
-- Can start simple and enhance over time
-
-**P. Recommended Starting Point**
-
-For quick implementation:
-1. Create `_data/prompts.json` with 30-50 prompts across categories
-2. Add `/write.md` page that:
-   - Displays random prompt from enabled categories
-   - Shows simple textarea
-   - Provides markdown template to copy
-3. User manually creates file in `content/writing/prompts/`
-4. Iterate from there based on usage
-
-This gets the core value (writing prompts) without complex infrastructure, then enhance based on what you actually use.
-
----
-
-## New Ideas for 2025
 
 ### Brain Garden Specific Features
 
