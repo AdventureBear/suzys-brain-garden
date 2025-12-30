@@ -4,3 +4,6 @@ package-lock.json
 .idea
 .vscode
 *~
+.cursor
+.claude
+.env

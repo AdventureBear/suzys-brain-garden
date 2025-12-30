@@ -1,7 +1,7 @@
 const { DateTime } = require("luxon");
 const CleanCSS = require("clean-css");
-const UglifyJS = require("uglify-es");
-const htmlmin = require("html-minifier");
+const { minify: terserMinify } = require("terser");
+const htmlmin = require("html-minifier-terser");
 const svgContents = require("eleventy-plugin-svg-contents");
 const mdIterator = require('markdown-it-for-inline')
 const embedEverything = require("eleventy-plugin-embed-everything");
@@ -119,8 +119,9 @@ module.exports = function(eleventyConfig) {
     
 
    // Creates custom collection "results" for search
-   const searchFilter = require("./filters/searchFilter");
-   eleventyConfig.addFilter("search", searchFilter);
+   // TODO: Fix searchFilter for Eleventy v3 compatibility (templateContent async issue)
+   // const searchFilter = require("./filters/searchFilter");
+   // eleventyConfig.addFilter("search", searchFilter);
    eleventyConfig.addCollection("results", collection => {
     return [...collection.getFilteredByGlob("**/*.md")];
    });
@@ -154,13 +155,14 @@ module.exports = function(eleventyConfig) {
   });
 
   // Minify JS
-  eleventyConfig.addFilter("jsmin", function(code) {
-    let minified = UglifyJS.minify(code);
-    if (minified.error) {
-      console.log("UglifyJS error: ", minified.error);
+  eleventyConfig.addFilter("jsmin", async function(code) {
+    try {
+      let minified = await terserMinify(code);
+      return minified.code;
+    } catch (error) {
+      console.log("Terser error: ", error);
       return code;
     }
-    return minified.code;
   });
 
   // Minify HTML output

@@ -11,9 +11,14 @@ module.exports = function (collection) {
 
   // loop through each page and add it to the index
   collection.forEach((page) => {
+    // Skip pages without content (like 404)
+    if (!page.templateContent) {
+      return;
+    }
+
     index.addDoc({
       id: page.url,
-      title: page.template.frontMatter.data.title,
+      title: page.data.title,
       content: squash(page.templateContent),
     });
   });
