@@ -53,7 +53,10 @@ npm start
 npm run dev
 ```
 
-This will start a local server at http://localhost:8080/ with hot reload enabled.
+This will start three servers:
+- **http://localhost:8080** - Your brain garden site (with hot reload)
+- **http://localhost:3001** - Writing Prompts Tool (local dev only)
+- PostCSS watcher for styles
 
 ### 3. Build for production
 
@@ -79,6 +82,43 @@ suzys-brain-garden/
 ├── _site/              # Generated site (do not edit)
 └── .eleventy.js       # Eleventy configuration
 ```
+
+## Writing Prompts Tool (Local Dev Only)
+
+A standalone tool for generating content from writing prompts. **Runs only during local development - never deploys to Netlify.**
+
+### Quick Start
+
+1. Run `npm start`
+2. Visit **http://localhost:3001**
+3. Browse 115+ attention-first prompts
+4. Write your response
+5. Save - file is created automatically in `content/writing/`
+
+### Features
+
+- 115 curated prompts (attention-first, configuration-based)
+- Cycle through prompts or get random ones
+- Markdown editor with word count
+- Folder selection (or create new subfolders)
+- Auto-save drafts to localStorage
+- Automatic frontmatter generation
+- Dark mode support
+
+### How It Works
+
+The tool creates markdown files at:
+```
+content/writing/[subfolder]/YYYY-MM-DD-prompt-slug.md
+```
+
+Files appear immediately in your local repo. Commit when ready to publish.
+
+**Note**: This tool only runs locally. Netlify runs `npm run build` which doesn't include the server.
+
+See `tools/writing-prompts/README.md` for full documentation.
+
+---
 
 ## Writing Content
 

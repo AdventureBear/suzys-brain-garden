@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing Prompts</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="container" x-data="promptApp()" x-init="init()">
+        <header>
+            <h1>Writing Prompts</h1>
+            <p class="subtitle">Attention-first prompts for your brain garden</p>
+        </header>
+
+        <!-- Prompt Search & Display -->
+        <div class="prompt-section">
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <input
+                    type="text"
+                    x-model="searchQuery"
+                    @input="filterPrompts()"
+                    placeholder="🔍 Search prompts..."
+                    class="search-input"
+                >
+                <button @click="clearSearch()" x-show="searchQuery" class="btn-clear">✕</button>
+            </div>
+
+            <!-- Prompt Display -->
+            <div class="prompt-display">
+                <p class="prompt-text" x-text="currentPrompt"></p>
+                <div class="prompt-controls">
+                    <button @click="previousPrompt()" class="btn btn-secondary" :disabled="filteredPrompts.length === 0">← Previous</button>
+                    <span class="prompt-counter" x-text="getPromptCounter()"></span>
+                    <button @click="nextPrompt()" class="btn btn-secondary" :disabled="filteredPrompts.length === 0">Next →</button>
+                    <button @click="randomPrompt()" class="btn btn-secondary" :disabled="filteredPrompts.length === 0">🎲 Random</button>
+                </div>
+
+                <!-- Prompt Stats -->
+                <div class="prompt-stats" x-show="getUsageCount(currentPrompt) > 0">
+                    <small>
+                        Used <span x-text="getUsageCount(currentPrompt)"></span> time(s)
+                        <span x-show="isFavorite(currentPrompt)">⭐</span>
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Writing Area with Preview -->
+        <div class="writing-section">
+            <div class="editor-header">
+                <div class="header-left">
+                    <h2>Your Response</h2>
+                    <div class="view-toggle">
+                        <button
+                            @click="viewMode = 'edit'"
+                            class="btn-toggle"
+                            :class="{'active': viewMode === 'edit'}">
+                            Edit
+                        </button>
+                        <button
+                            @click="viewMode = 'split'"
+                            class="btn-toggle"
+                            :class="{'active': viewMode === 'split'}">
+                            Split
+                        </button>
+                        <button
+                            @click="viewMode = 'preview'"
+                            class="btn-toggle"
+                            :class="{'active': viewMode === 'preview'}">
+                            Preview
+                        </button>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <button @click="showMarkdownRef = true" class="btn-help">📝 Markdown Help</button>
+                    <div class="word-count">
+                        <span x-text="wordCount"></span> words |
+                        <span x-text="charCount"></span> characters
+                    </div>
+                </div>
+            </div>
+
+            <div class="editor-container" :class="`view-${viewMode}`">
+                <!-- Editor Pane -->
+                <div class="editor-pane" x-show="viewMode === 'edit' || viewMode === 'split'">
+                    <textarea
+                        x-model="content"
+                        @input="updateCounts(); updatePreview()"
+                        placeholder="Start writing... (Markdown supported)"
+                        class="editor"
+                        :rows="viewMode === 'split' ? '15' : '20'"
+                    ></textarea>
+                </div>
+
+                <!-- Preview Pane -->
+                <div class="preview-pane" x-show="viewMode === 'preview' || viewMode === 'split'">
+                    <div class="preview-content" x-html="previewHtml"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Save Section -->
+        <div class="save-section">
+            <div class="folder-selection">
+                <label>
+                    <span>Folder:</span>
+                    <select x-model="selectedFolder" @change="folderChanged()">
+                        <option value="">Select subfolder (optional)</option>
+                        <option x-show="folders.length === 0" disabled>No subfolders yet</option>
+                        <template x-for="folder in folders" :key="folder">
+                            <option :value="folder" x-text="folder"></option>
+                        </template>
+                        <option value="__new__">+ Create new subfolder</option>
+                    </select>
+                </label>
+
+                <!-- New subfolder input -->
+                <div x-show="selectedFolder === '__new__'" class="new-subfolder">
+                    <input
+                        type="text"
+                        x-model="newSubfolderName"
+                        placeholder="Enter subfolder name"
+                        class="input"
+                    >
+                </div>
+            </div>
+
+            <div class="save-controls">
+                <button @click="save()" :disabled="saving || !content.trim()" class="btn btn-primary">
+                    <span x-show="!saving">💾 Save</span>
+                    <span x-show="saving">Saving...</span>
+                </button>
+                <button @click="toggleFavorite(currentPrompt)" class="btn btn-secondary" :title="isFavorite(currentPrompt) ? 'Remove from favorites' : 'Add to favorites'">
+                    <span x-text="isFavorite(currentPrompt) ? '⭐ Favorited' : '☆ Favorite'"></span>
+                </button>
+                <button @click="clear()" class="btn btn-secondary">Clear</button>
+            </div>
+
+            <!-- Status message -->
+            <div x-show="statusMessage" class="status-message" :class="statusType">
+                <p x-text="statusMessage"></p>
+                <small x-show="savedFilePath" x-text="'Saved to: ' + savedFilePath"></small>
+            </div>
+        </div>
+
+        <!-- Markdown Reference Modal -->
+        <div x-show="showMarkdownRef" @click.self="showMarkdownRef = false" class="modal-overlay">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Markdown Quick Reference</h2>
+                    <button @click="showMarkdownRef = false" class="btn-close">✕</button>
+                </div>
+                <div class="modal-body">
+                    <div class="md-ref-grid">
+                        <div class="md-ref-item">
+                            <strong>Headers</strong>
+                            <code># H1<br>## H2<br>### H3</code>
+                        </div>
+                        <div class="md-ref-item">
+                            <strong>Emphasis</strong>
+                            <code>*italic* or _italic_<br>**bold** or __bold__<br>***bold italic***</code>
+                        </div>
+                        <div class="md-ref-item">
+                            <strong>Lists</strong>
+                            <code>- Unordered item<br>* Another item<br><br>1. Ordered item<br>2. Another item</code>
+                        </div>
+                        <div class="md-ref-item">
+                            <strong>Links</strong>
+                            <code>[Link text](https://url.com)<br>[Link with title](url "Title")</code>
+                        </div>
+                        <div class="md-ref-item">
+                            <strong>Images</strong>
+                            <code>![Alt text](image.jpg)<br>![Alt](image.jpg "Title")</code>
+                        </div>
+                        <div class="md-ref-item">
+                            <strong>Quotes</strong>
+                            <code>> Blockquote<br>> Multiple lines<br>>> Nested quote</code>
+                        </div>
+                        <div class="md-ref-item">
+                            <strong>Code</strong>
+                            <code>`inline code`<br><br>```<br>code block<br>```</code>
+                        </div>
+                        <div class="md-ref-item">
+                            <strong>Horizontal Rule</strong>
+                            <code>---<br>***<br>___</code>
+                        </div>
+                    </div>
+                    <div class="md-ref-footer">
+                        <a href="https://www.markdownguide.org/basic-syntax/" target="_blank" rel="noopener">Full Markdown Guide →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <details>
+                <summary>How to use this tool</summary>
+                <ul>
+                    <li><strong>Search prompts</strong> using the search bar</li>
+                    <li><strong>Navigate</strong> with Next/Previous or get a random prompt</li>
+                    <li><strong>Favorite prompts</strong> to find them easily later</li>
+                    <li><strong>Write in markdown</strong> with live preview</li>
+                    <li><strong>Select a subfolder</strong> or create a new one</li>
+                    <li><strong>Save</strong> - file is created automatically in content/writing/</li>
+                    <li><strong>Commit</strong> when ready to publish</li>
+                </ul>
+            </details>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
