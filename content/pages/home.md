@@ -5,11 +5,23 @@ permalink: /
 eleventyNavigation:
   key: Hello
   order: 0
-  title: Hello, world.
+  title: Home
 ---
-Hi, I go by Suzy-Q here which is the name my grandfather called me. My grandfather was an inventor who built airplanes in his garage, and taught me about creativity, outer-space, solving complex problems, reading the stock market, living a long healthy life, and how to fly a glider without stalling.
 
-![Hello, world](/content/images/hello.jpg)
+<div class="space-y-1">
+<h3>Writing</h3>
+{% for post in collections.writing %}
+<div><a href="{{ post.url }}">{{ post.data.title }}</a></div>
+{% endfor %}
+</div>
+
+
+<div class="space-y-1">
+<h3>Maker</h3>
+{% for post in collections.maker %}
+<div><a href="{{ post.url }}">{{ post.data.title }}</a></div>
+{% endfor %}
+</div>
 
 ->*Onward...*<-
 

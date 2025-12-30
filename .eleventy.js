@@ -108,6 +108,12 @@ module.exports = function(eleventyConfig) {
       .sort((a, b) => b.date - a.date); // Newest first
    });
 
+   // Creates custom collection "maker" - maker/project posts
+   eleventyConfig.addCollection("maker", function(collection) {
+    return collection.getFilteredByGlob("content/maker/**/*.md")
+      .sort((a, b) => b.date - a.date); // Newest first
+   });
+
    // Creates custom collection "posts"
   //  eleventyConfig.addCollection("posts", function(collection) {
   //   const coll = collection.getFilteredByGlob("posts/*.md");

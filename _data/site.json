@@ -6,7 +6,7 @@
   "url": "https://suzys-brain-garden.netlify.app",
   "githubUrl": "https://github.com/adventurebear/suzys-brain-garden",
   "githubBranch": "main",
-  "navigationStyle": "horizontal",
+  "navigationStyle": "vertical",
   "emoji": "💥",
   "enableSearch": true,
   "enableDarkMode": true,
@@ -17,5 +17,5 @@
   "enableNetlifyCMS": false,
   "enableComments": false,
   "enableEncryption": false,
-  "enablePageNavigation": true
+  "enablePageNavigation": false
 }
