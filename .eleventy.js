@@ -99,7 +99,13 @@ module.exports = function(eleventyConfig) {
 
    // Creates custom collection "pages"
    eleventyConfig.addCollection("pages", function(collection) {
-    return collection.getFilteredByGlob("pages/*.md");
+    return collection.getFilteredByGlob("content/pages/*.md");
+   });
+
+   // Creates custom collection "writing" - all your blog posts/thoughts
+   eleventyConfig.addCollection("writing", function(collection) {
+    return collection.getFilteredByGlob("content/writing/**/*.md")
+      .sort((a, b) => b.date - a.date); // Newest first
    });
 
    // Creates custom collection "posts"
