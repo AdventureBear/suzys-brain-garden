@@ -32,9 +32,45 @@ app.get('/api/folders', (req, res) => {
   }
 });
 
+// Get tags for a specific folder
+app.get('/api/folder-tags', (req, res) => {
+  const { subfolder } = req.query;
+
+  if (!subfolder) {
+    return res.json({ tags: [] });
+  }
+
+  const jsonPath = path.join(__dirname, `../../content/writing/${subfolder}/${subfolder}.json`);
+
+  try {
+    if (fs.existsSync(jsonPath)) {
+      const data = fs.readFileSync(jsonPath, 'utf8');
+      const config = JSON.parse(data);
+
+      // Tags might be a string or an array
+      let tags = [];
+      if (config.tags) {
+        if (Array.isArray(config.tags)) {
+          tags = config.tags;
+        } else if (typeof config.tags === 'string') {
+          tags = [config.tags];
+        }
+      }
+
+      res.json({ tags });
+    } else {
+      // No .json file found, return empty tags
+      res.json({ tags: [] });
+    }
+  } catch (error) {
+    console.error('Error reading folder tags:', error);
+    res.json({ tags: [] });
+  }
+});
+
 // Save prompt response
 app.post('/api/save', (req, res) => {
-  const { content, folder, subfolder, prompt, createNewSubfolder, newSubfolderName } = req.body;
+  const { content, folder, subfolder, prompt, createNewSubfolder, newSubfolderName, title, tags } = req.body;
 
   try {
     // Determine the target folder
@@ -57,15 +93,14 @@ app.post('/api/save', (req, res) => {
       fs.mkdirSync(fullPath, { recursive: true });
     }
 
-    // Generate filename
+    // Generate filename using title (no date prefix)
     const date = new Date();
-    const dateStr = date.toISOString().split('T')[0]; // YYYY-MM-DD
-    const slug = generateSlug(prompt);
-    const filename = `${dateStr}-${slug}.md`;
+    const slug = generateSlugFromTitle(title);
+    const filename = `${slug}.md`;
     const filePath = path.join(fullPath, filename);
 
-    // Generate frontmatter
-    const frontmatter = generateFrontmatter(prompt, date, targetSubfolder);
+    // Generate frontmatter with title, tags, and permalink
+    const frontmatter = generateFrontmatter(title, date, slug, tags);
 
     // Combine frontmatter and content
     const fileContent = `${frontmatter}\n${content}\n\n---\n\n**Prompt**: ${prompt}\n**Date**: ${date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}\n`;
@@ -87,34 +122,36 @@ app.post('/api/save', (req, res) => {
   }
 });
 
-// Helper function to generate slug from prompt
-function generateSlug(prompt) {
-  return prompt
+// Helper function to generate slug from title (limit to 5 words)
+function generateSlugFromTitle(title) {
+  // Get first 5 words
+  const words = title.trim().split(/\s+/).slice(0, 5);
+  const limitedTitle = words.join(' ');
+
+  return limitedTitle
     .toLowerCase()
     .replace(/[↔]/g, '') // Remove special characters like arrows
     .replace(/[^\w\s-]/g, '') // Remove non-word chars except spaces and hyphens
     .trim()
     .replace(/\s+/g, '-') // Replace spaces with hyphens
-    .substring(0, 50); // Limit length
+    .substring(0, 50); // Limit total length as safety
 }
 
 // Helper function to generate frontmatter
-function generateFrontmatter(prompt, date, subfolder) {
+function generateFrontmatter(title, date, slug, tags = []) {
   const dateStr = date.toISOString().split('T')[0];
-  const title = prompt.length > 60 ? prompt.substring(0, 60) + '...' : prompt;
 
-  // Generate tags based on subfolder
-  let tags = ['prompt-response'];
-  if (subfolder) {
-    tags.push(subfolder);
-  }
+  // Use provided tags or default to empty array
+  const tagsArray = tags.length > 0 ? tags : ['writing'];
+
+  // Permalink is just /slug/ (no subfolders)
+  const permalink = `/${slug}/`;
 
   return `---
 title: "${title}"
 date: ${dateStr}
-prompt: "${prompt}"
-tags: [${tags.map(t => `"${t}"`).join(', ')}]
-layout: layouts/page.njk
+permalink: ${permalink}
+tags: [${tagsArray.map(t => `"${t}"`).join(', ')}]
 ---`;
 }
 
