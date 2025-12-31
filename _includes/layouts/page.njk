@@ -12,12 +12,12 @@ section: page
              <div class="main  flex flex-col pr-0 prose sm:prose lg:prose-lg xl:prose-md">
             {% endif %}
                 <article>
-                <h2 class="dark:text-gray-500">{{ title }}</h2>
-                {% if site.enableEditButton == true %}
-                <div class="flex items-center justify-end text-sm text-gray-500 mb-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="dark:text-gray-500 mt-0 mb-0">{{ title }}</h2>
+                    {% if site.enableEditButton == true %}
                     <a class="text-xs text-gray-500 hover:text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 px-3 py-1 rounded transition-colors no-underline" target="_blank" rel="noopener noreferrer" href="{{ site.githubUrl }}/edit/{{ site.githubBranch }}/{{ page.inputPath }}">Edit</a>
+                    {% endif %}
                 </div>
-                {% endif %}
                 <div class="self-center adjust  dark:text-gray-400">
                     {{ content | safe }}
                     {% if (site.enableComments) and (comments !== 0) %}
