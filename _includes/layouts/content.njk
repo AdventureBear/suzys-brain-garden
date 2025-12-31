@@ -3,16 +3,6 @@ layout: layouts/base.njk
 section: content
 ---
 
-{% if site.navigationStyle == "vertical" %}
-    {% if site.enableEditButton == true %}
-    <div class="flex mt-4 justify-end mr-1">
-        {% if site.enableEditButton == true %}
-        <div class="inline-block w-auto text-xs  text-gray-500 hover:bg-gray-200 pt-1 pr-4 pb-1 pl-3 rounded "><a target="_blank" rel="noopener" rel="noreferrer" href="{{ site.githubUrl }}/edit/{{ site.githubBranch }}/{{ page.inputPath }}">Edit</a></div>
-        {% endif %}
-    </div>
-    {% endif %}
-{% endif %}
-
 <div class="flex w-full justify-center">
     <div class="mt-4 px-6 md:px-6 lg:px-8 xl:px-12 w-full max-w-5xl">
         <div class="wrapper flex justify-between">
@@ -23,16 +13,12 @@ section: content
             {% endif %}
                 <article>
                 <h2 class="dark:text-gray-500">{{ title }}</h2>
-                <div class="text-sm text-gray-500 mb-4">
-                    Published <time datetime="{{ page.date | machineDate }}">{{ page.date | readableDate }}</time>
-                </div>
-                {% if site.navigationStyle == "horizontal" %}
+                <div class="flex items-center justify-between text-sm text-gray-500 mb-6">
+                    <span>Published <time datetime="{{ page.date | machineDate }}">{{ page.date | readableDate }}</time></span>
                     {% if site.enableEditButton == true %}
-                        <div class="flex mt-4 justify-end mr-1">
-                            <div class="inline-block w-auto text-xs  text-gray-500 hover:bg-gray-200 pt-1 pr-4 pb-1 pl-3 rounded "><a class="text-gray-500 no-underline font-normal !important" target="_blank" href="{{ site.githubUrl }}/edit/{{ site.githubBranch }}/{{ page.inputPath }}">Edit</a></div>
-                        </div>
+                    <a class="text-xs text-gray-500 hover:text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 px-3 py-1 rounded transition-colors no-underline" target="_blank" rel="noopener noreferrer" href="{{ site.githubUrl }}/edit/{{ site.githubBranch }}/{{ page.inputPath }}">Edit</a>
                     {% endif %}
-                {% endif %}
+                </div>
                 <div class="self-center adjust  dark:text-gray-400">
                     {{ content | safe }}
                     {% if (site.enableComments) and (comments !== 0) %}

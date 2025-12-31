@@ -13,8 +13,8 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        'sans': ['Georgia', 'ui-serif', 'serif'],
-        'serif': ['Georgia', 'ui-serif', 'serif'],
+        'sans': ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'],
+        'serif': ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'],
       },
       typography: {
         DEFAULT: {
