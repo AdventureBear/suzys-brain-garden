@@ -147,15 +147,26 @@ module.exports = function(eleventyConfig) {
       })
   );
 
-  // Date formatting (human readable)
+  // Date formatting (human readable) - Short month format
   eleventyConfig.addFilter("readableDate", dateObj => {
-    return DateTime.fromJSDate(dateObj).toFormat("LLL dd, yyyy");
+    return DateTime.fromJSDate(dateObj).toFormat("MMM dd, yyyy");
   });
 
   // Date formatting (machine readable)
   eleventyConfig.addFilter("machineDate", dateObj => {
-
     return DateTime.fromJSDate(dateObj).toFormat("yyyy-MM-dd");
+  });
+
+  // Get the most recent modification date from all content
+  eleventyConfig.addFilter("getNewestCollectionItemDate", collection => {
+    if (!collection || !collection.length) {
+      return new Date();
+    }
+    return new Date(
+      Math.max(...collection.map(item => {
+        return item.date ? item.date.getTime() : 0;
+      }))
+    );
   });
 
   // Minify CSS

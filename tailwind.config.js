@@ -12,6 +12,10 @@ module.exports = {
       center: true,
     },
     extend: {
+      fontFamily: {
+        'sans': ['Georgia', 'ui-serif', 'serif'],
+        'serif': ['Georgia', 'ui-serif', 'serif'],
+      },
       typography: {
         DEFAULT: {
           css: {
