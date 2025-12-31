@@ -7,3 +7,4 @@ package-lock.json
 .cursor
 .claude
 .env
+_tmp/
