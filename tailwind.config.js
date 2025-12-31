@@ -12,6 +12,10 @@ module.exports = {
       center: true,
     },
     extend: {
+      fontFamily: {
+        'sans': ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'],
+        'serif': ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'],
+      },
       typography: {
         DEFAULT: {
           css: {

@@ -1,6 +1,9 @@
 function applyThemeColor () {
-  if (localStorage.getItem('darkmode') === 'true' || (!(localStorage.getItem('darkmode')) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    localStorage.setItem('darkmode', 'true')
+  // Check session override first, then fall back to system preference
+  const sessionOverride = sessionStorage.getItem('darkmode')
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+
+  if (sessionOverride === 'true' || (sessionOverride === null && systemPrefersDark)) {
     document.documentElement.classList.add('dark')
   } else {
     document.documentElement.classList.remove('dark')
@@ -8,11 +11,9 @@ function applyThemeColor () {
 }
 
 function activateDarkMode() {
-  const newDarkModeValue = localStorage.getItem('darkmode') === 'true'
-    ? 'false'
-    : 'true'
-
-  localStorage.setItem('darkmode', newDarkModeValue)
+  // Toggle current state and save to session only (not persistent across visits)
+  const currentlyDark = document.documentElement.classList.contains('dark')
+  sessionStorage.setItem('darkmode', currentlyDark ? 'false' : 'true')
   applyThemeColor()
 }
 
