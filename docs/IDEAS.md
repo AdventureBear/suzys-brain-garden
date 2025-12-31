@@ -2,7 +2,7 @@
 
 This file tracks ideas for enhancing Suzy's Brain Garden functionality and features.
 
-**Last Updated**: 2025-12-30
+**Last Updated**: 2025-12-31
 
 ---
 
@@ -77,7 +77,34 @@ This file tracks ideas for enhancing Suzy's Brain Garden functionality and featu
 
 ---
 
-#### 4. Comprehensive Feature Testing
+#### 4. Layout & Typography Improvements
+**Status**: ✅ COMPLETED (2025-12-31)
+**What was done**:
+- Implemented system sans-serif font stack (San Francisco, Segoe UI, Roboto)
+- Created separate `content.njk` layout for explicit content type handling
+- Moved publication dates to appear under post titles (better context)
+- Rebuilt footer with copyright, last updated date, sticky positioning
+- Replaced lightbulb icon with contextual sun/moon icons for dark mode
+- Added header padding/gutters for better visual balance
+- Fixed font size consistency between navigation and body text
+- Repositioned Edit link to be contextual with title/date
+- Changed dark mode to use sessionStorage (respects system preference, no persistent user data)
+- Removed all visual gridlines/borders for cleaner appearance
+
+**Outcome**:
+- Modern, crisp typography with zero HTTP requests
+- Clean separation of concerns (content.njk vs page.njk)
+- Better readability in both light and dark modes
+- Professional footer with useful metadata
+- Minimalist aesthetic preserved
+- System dark mode preference respected by default
+- Session-only toggle (no persistent preference storage)
+
+**See**: PR #9, docs/issues/7-fix-layout-typography/
+
+---
+
+#### 5. Comprehensive Feature Testing
 **Manual testing needed for**:
 - Dark mode toggle functionality
 - Navigation system
@@ -90,7 +117,72 @@ This file tracks ideas for enhancing Suzy's Brain Garden functionality and featu
 
 ### Low Priority
 
-#### 4. Tailwind v4 Upgrade Investigation
+#### 6. Dark Mode Accessibility Audit
+**Priority**: HIGH (when time allows)
+**Status**: Pending
+**Why important**: Ensure WCAG AA compliance for all users
+
+**Tasks**:
+- Audit all color combinations in dark mode
+- Verify WCAG AA contrast ratios (4.5:1 minimum for normal text)
+- Focus areas:
+  - Navigation text colors
+  - Footer text
+  - Date/metadata text
+  - Link colors (default and hover states)
+  - Body text on dark background
+- Use contrast checker tools
+- Document color palette with contrast ratios
+
+**Why valuable**: Accessibility is essential, especially for a content-focused site. Good contrast benefits all users, not just those with visual impairments.
+
+---
+
+#### 7. Search Experience Improvements
+**Priority**: MEDIUM
+**Status**: Pending
+**Why important**: Better search UX aligns with minimalist content discovery
+
+**Tasks**:
+- Fix search results dark mode background (currently has contrast issues)
+- Improve "no results" messaging
+- Consider search icon inside input field
+- Ensure search works well on mobile
+
+**Why valuable**: Search is a key discovery tool for minimalist sites without heavy navigation.
+
+**Note**: Keep enhancements minimal - avoid keyboard shortcuts, loading spinners, etc. (not aligned with minimalist aesthetic)
+
+---
+
+#### 8. Navigation Active State Clarity
+**Priority**: MEDIUM
+**Status**: Pending
+**Why important**: Help users understand current location
+
+**Tasks**:
+- Evaluate if current active state (font weight) is clear enough
+- Consider adding subtle indicator (bottom border, background, etc.)
+- Keep it minimal - no bold colors or heavy styling
+
+**Why valuable**: Wayfinding is important even in minimalist designs.
+
+---
+
+#### 9. Mobile Navigation Polish
+**Priority**: LOW
+**Status**: Pending
+
+**Tasks**:
+- Ensure hamburger menu touch target is large enough (44x44px minimum)
+- Verify mobile navigation usability
+- Test on various devices
+
+**Why valuable**: Many users browse on mobile, ensure good experience.
+
+---
+
+#### 10. Tailwind v4 Upgrade Investigation
 **Status**: Currently on v3.4.0
 **Why not now**: v4 has breaking changes that require CSS rewrites
 
