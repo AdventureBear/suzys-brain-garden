@@ -1,5 +1,5 @@
 ---
-title: ""
+title: entry
 date: Last Modified
 permalink: /
 eleventyNavigation:
@@ -7,16 +7,17 @@ eleventyNavigation:
   order: 0
   title: entry
 ---
-
+<pre style="background: transparent; border: none; padding: 0; margin: 0; font-family: inherit; font-size: inherit; color: inherit; white-space: pre-wrap;">
 log entry.
 visibility good.
 conditions favorable.
 
 navigation:
-- fragments end where they end.
-- builds end where they work.
+- <a href="/fragments/">fragments</a> end where they end.
+- <a href="/builds/">builds</a> end where they work.
 
 begin anywhere.
+</pre>
 
 <div class="space-y-1 mt-8">
 <h3>fragments</h3>

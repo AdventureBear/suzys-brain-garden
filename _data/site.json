@@ -10,7 +10,7 @@
   "emoji": "💥",
   "enableSearch": true,
   "enableDarkMode": true,
-  "enableEditButton": true,
+  "enableEditButton": false,
   "enableDatestamp": true,
   "enableGithubLink": false,
   "enableContact": false,
