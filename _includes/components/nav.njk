@@ -16,21 +16,21 @@
  
 {%- if not entry.children.length  -%}
   {% if rel == "child" %}
-   <a class="w-max 
-    rounded  
-    px-4 py-2 
+   <a class="w-max
+    rounded
+    px-4 py-2
     block
-    focus:text-gray-900 
-    text-base bg-transparent 
+    focus:text-gray-900
+    text-base bg-transparent
     dark:bg-transparent
-    dark:hover:text-gray-400 
-    md:mt-0 
+    dark:hover:text-gray-400
+    md:mt-0
     m-0
     hover:font-bold
-    focus:text-gray-900   
-    focus:outline-none focus:ring {{ highlight }} 
-    text-gray-500 
-    dark:text-gray-500" 
+    focus:text-gray-900
+    focus:outline-none focus:ring {{ highlight }}
+    text-gray-500
+    dark:text-gray-500"
     href="{{ entry.url | url }}">{{ entry.title }}</a>
   {% else %}
    <a class="w-max
