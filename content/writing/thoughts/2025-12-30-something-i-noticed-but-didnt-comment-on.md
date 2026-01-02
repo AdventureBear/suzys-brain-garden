@@ -1,11 +1,11 @@
 ---
-title: "Something I noticed but didn't comment on"
+title: "Almost Settled"
 date: 2025-12-30
-prompt: "Something I noticed but didn't comment on"
+permalink: /almost-settled/
 tags: ["prompt-response", "thoughts"]
 layout: layouts/page.njk
 ---
-## Like a Skip on a Record
+
 
 My therapist recently got rid of her old upholstered sofa and replaced it with a two-seater couch that feels more like a bench.  It's firmer than the old one, and there's little cushion in the back.  the arms are thin rails with faux leatherette covering and thin padding, so that there's only one specific way you could possibly rest your arm there.  Leaning on it in a reflection pose is out of the question.  
 

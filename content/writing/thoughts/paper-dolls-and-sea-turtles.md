@@ -1,5 +1,5 @@
 ---
-title: "When: April 1, 2013"
+title: "Paper Dolls and Sea Turtles"
 date: 2026-01-02
 permalink: /paper-dolls-and-sea-turtles/
 tags: ["swimming", "hawaii", "kona", "tsunami"]
@@ -105,13 +105,14 @@ We got to shore and as we got out of the water, expecting to see people rushing 
 
 The tiki boys who rent kayaks and snorkel gear were still open.  We walked over.  
 
-> "What was that noise, was that the tsunami alarm?"
-
-> "Yes the smiled"
-
+> "What was that noise, was that the tsunami alarm?"  
+> 
+> "Yes,  he smiled"
+>
 > "Is there a tsunami coming?"
-
+>
 > "Yeah it will be here in about 20 minutes".
+>
 
 They kept smiling.   Then giggling.  Then laughing.
 
