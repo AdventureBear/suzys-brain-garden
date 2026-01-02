@@ -1,14 +1,22 @@
 ---
-title: Hello, world.
+title: ""
 date: Last Modified
 permalink: /
 eleventyNavigation:
-  key: Hello
+  key: entry
   order: 0
-  title: Home
+  title: entry
 ---
 
-fragments end where they end. builds end where they work.
+log entry.
+visibility good.
+conditions favorable.
+
+navigation:
+- fragments end where they end.
+- builds end where they work.
+
+begin anywhere.
 
 <div class="space-y-1 mt-8">
 <h3>fragments</h3>
@@ -17,15 +25,12 @@ fragments end where they end. builds end where they work.
 {% endfor %}
 </div>
 
-
-<div class="space-y-1">
+<div class="space-y-1 mt-8">
 <h3>builds</h3>
 {% for post in collections.builds %}
 <div><a href="{{ post.url }}">{{ post.data.title }}</a></div>
 {% endfor %}
 </div>
-
-->*Onward...*<-
 
 
 
