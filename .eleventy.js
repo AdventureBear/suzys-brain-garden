@@ -102,15 +102,15 @@ module.exports = function(eleventyConfig) {
     return collection.getFilteredByGlob("content/pages/*.md");
    });
 
-   // Creates custom collection "writing" - all your blog posts/thoughts
-   eleventyConfig.addCollection("writing", function(collection) {
-    return collection.getFilteredByGlob("content/writing/**/*.md")
+   // Creates custom collection "fragments" - all your blog posts/thoughts
+   eleventyConfig.addCollection("fragments", function(collection) {
+    return collection.getFilteredByGlob("content/fragments/**/*.md")
       .sort((a, b) => b.date - a.date); // Newest first
    });
 
-   // Creates custom collection "maker" - maker/project posts
-   eleventyConfig.addCollection("maker", function(collection) {
-    return collection.getFilteredByGlob("content/maker/**/*.md")
+   // Creates custom collection "builds" - builds/project posts
+   eleventyConfig.addCollection("builds", function(collection) {
+    return collection.getFilteredByGlob("content/builds/**/*.md")
       .sort((a, b) => b.date - a.date); // Newest first
    });
 

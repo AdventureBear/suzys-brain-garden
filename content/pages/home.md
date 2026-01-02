@@ -8,17 +8,19 @@ eleventyNavigation:
   title: Home
 ---
 
-<div class="space-y-1">
-<h3>Writing</h3>
-{% for post in collections.writing %}
+fragments end where they end. builds end where they work.
+
+<div class="space-y-1 mt-8">
+<h3>fragments</h3>
+{% for post in collections.fragments %}
 <div><a href="{{ post.url }}">{{ post.data.title }}</a></div>
 {% endfor %}
 </div>
 
 
 <div class="space-y-1">
-<h3>Maker</h3>
-{% for post in collections.maker %}
+<h3>builds</h3>
+{% for post in collections.builds %}
 <div><a href="{{ post.url }}">{{ post.data.title }}</a></div>
 {% endfor %}
 </div>
