@@ -1,11 +1,11 @@
 ---
-title: "A place where people wait without sitting ↔ A place where pe..."
+title: "The Long Middle"
 date: 2025-12-31
 prompt: "A place where people wait without sitting ↔ A place where people sit without waiting"
-tags: ["prompt-response", "medical"]
+tags: ["waiting"]
 layout: layouts/page.njk
 ---
-## Where I waited without sitting 
+
 
 Looking back, it's like watching a tv show that I watched a long time ago.  One of those short series shows on netflix or showtime....the kind where every episode ends with a twist and a cliffhanger to keep you waiting on the edge of your seat until the next one. 
 
@@ -29,5 +29,5 @@ Like so many moments during those 2 1/2 years of him dealing with brain cancer..
 
 ---
 
-**Prompt**: A place where people wait without sitting ↔ A place where people sit without waiting
+**Prompt**: A place where people wait without sitting
 **Date**: December 31, 2025
