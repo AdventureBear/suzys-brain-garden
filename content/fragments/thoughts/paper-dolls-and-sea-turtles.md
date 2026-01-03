@@ -50,7 +50,7 @@ The saltwater made me super buoyant and I didn't have to exert any energy to sto
 A hundred yards or so before arriving at the turnaround where Celeste was waiting, I started to hear a sharp, shrill noise under the water.   It had a high pitched tone, repeated, unmistakeable for a man-made sound.   (How I wished it would have been a whale!).    I stopped for a moment and could hear it above the water as well.  It was everywhere, It wasn't coming from a boat or from a radio on the beach. It was an all encompassing piercing sound that was almost as loud with my head in the water. 
 
 
-I swam to Ceelest, my heart beating faster than it had been and my mind started to race.   Was this the Tsunami alarm?   I think it is the Tsunami alarm!   I thought of the tragedy in Bali on Christmas day several years ago.   The fatal tsunami wave approached so quickly that many on land did not have time to get away.  
+I swam to Ceelest, my heart beating faster than it had been and my mind started to race.   Was this the Tsunami alarm?   I think it is the Tsunami alarm!   I thought of the tragedy in Indonesia on Christmas day several years ago.   The fatal tsunami wave approached so quickly that many on land did not have time to get away.  
 
 
 Was there a wave approaching us?  As I swam I kept looking at the fishing boats that were out on the water.  They were still headed out, and not in.   They didn't appear to be alarmed, but they were too far away to communicate with.  I breathed the other direction and looked to the shore for any sign of panic...nothing.
@@ -78,7 +78,7 @@ We headed back, this time with urgency.   Celeste was faster than me and she was
 I envisioned us being in the ocean when the tsunami arrived. Would we die? Were we safer in the water?
 
 
-I recalled that in Bali, there were divers underwater that had no idea what had happened when they surfaced.  The sea had destroyed the homes on the shore, but they barely felt any waves when they were submerged.
+I recalled that in Indonesia, there were divers underwater that had no idea what had happened when they surfaced.  The sea had destroyed the homes on the shore, but they barely felt any waves when they were submerged.
 
 
 I kept my wits, but was still slightly panicked.   We swam nearly side by side. I drafted at her hip.  new body sensations surfaced that i'd never felt before. 
