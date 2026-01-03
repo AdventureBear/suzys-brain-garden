@@ -111,6 +111,7 @@
   nav ul {
     @apply ml-0;
     color: var(--color-text-secondary);
+    font-family: 'Courier New', Courier, monospace;
    }
   nav ul ul {
     @apply ml-6;
