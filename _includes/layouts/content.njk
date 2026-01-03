@@ -12,14 +12,14 @@ section: content
              <div class="main  flex flex-col pr-0 prose sm:prose lg:prose-lg xl:prose-md">
             {% endif %}
                 <article>
-                <h2 class="dark:text-gray-500 mt-0">{{ title }}</h2>
+                <h2 class="dark:text-white mt-0">{{ title }}</h2>
                 <div class="text-sm text-gray-500 mb-6">
                     <div>Published <time datetime="{{ page.date | machineDate }}">{{ page.date | readableDate }}</time></div>
                     {% if prompt %}
                     <div>Prompt: {{ prompt }}</div>
                     {% endif %}
                 </div>
-                <div class="self-center adjust  dark:text-gray-400">
+                <div class="self-center adjust  dark:text-white">
                     {{ content | safe }}
                     {% if (site.enableComments) and (comments !== 0) %}
                         <!-- Paste your comment code here! -->

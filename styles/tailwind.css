@@ -13,13 +13,13 @@
   }
   /* Overrides for Tailwind Typography prose class */
   .prose a {
-    @apply dark:text-gray-400
+    @apply dark:text-blue-300
   }
   .prose a:hover {
-    @apply dark:text-gray-500
+    @apply dark:text-blue-200
   }
   .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 .prose hr, .prose strong {
-    @apply dark:text-gray-400
+    @apply dark:text-white
   }
   .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
     scroll-margin-top: 3.5em;
@@ -82,10 +82,10 @@
    @apply ml-6 text-gray-500;
   }
   nav ul li a {
-    @apply mb-1 pt-2 pr-4 pb-1 pl-2 w-full block text-gray-500 dark:text-gray-500;
+    @apply mb-1 pt-2 pr-4 pb-1 pl-2 w-full block text-gray-500 dark:text-white;
   }
   nav ul li a:hover {
-    @apply text-gray-900 dark:text-gray-400;
+    @apply text-gray-900 dark:text-gray-300;
   }
   nav ul li a.active {
     @apply font-semibold;
