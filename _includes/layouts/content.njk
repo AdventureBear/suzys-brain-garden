@@ -19,7 +19,7 @@ section: content
                     <div>Prompt: {{ prompt }}</div>
                     {% endif %}
                 </div>
-                <div class="self-center adjust">
+                <div class="self-center adjust" style="color: var(--color-text);">
                     {{ content | safe }}
                     {% if (site.enableComments) and (comments !== 0) %}
                         <!-- Paste your comment code here! -->
