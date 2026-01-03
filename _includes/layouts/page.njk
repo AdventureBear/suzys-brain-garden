@@ -13,9 +13,9 @@ section: page
             {% endif %}
                 <article>
                 <div class="mb-4">
-                    <h2 class="dark:text-gray-500 mt-0 mb-0">{{ title }}</h2>
+                    <h2 class="mt-0 mb-0" style="color: var(--color-text); font-family: 'Courier New', Courier, monospace;">{{ title }}</h2>
                 </div>
-                <div class="self-center adjust  dark:text-gray-400">
+                <div class="self-center adjust">
                     {{ content | safe }}
                     {% if (site.enableComments) and (comments !== 0) %}
                         <!-- Paste your comment code here! -->
@@ -24,11 +24,11 @@ section: page
                     {% if site.enablePageNavigation == true %}
                      <ul class="footer-nav pt-4 mb-8  ml-0 pl-0 flex flex-wrap flex-row-reverse  justify-between mt-8 list-none">
                      {%- set nextPage = collections.menuItems | getNextCollectionItem(page) %}
-                     {%- if nextPage %}<li class="ml-0 pl-0"><a class="font-semibold text-gray-500 hover:text-gray-900" href="{{ nextPage.url | url }}">{% if nextPage.data.eleventyNavigation.title %}{{  nextPage.data.eleventyNavigation.title }}{% else %}{{  nextPage.data.eleventyNavigation.key }}{% endif %}</a> <svg height="24" fill="none" viewBox="0 0 24 24" stroke="#6B7280" class="inline ml-1 flex-shrink-0"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></li>{% endif %}
+                     {%- if nextPage %}<li class="ml-0 pl-0"><a class="font-semibold" style="color: var(--color-text-secondary);" href="{{ nextPage.url | url }}">{% if nextPage.data.eleventyNavigation.title %}{{  nextPage.data.eleventyNavigation.title }}{% else %}{{  nextPage.data.eleventyNavigation.key }}{% endif %}</a> <svg height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: var(--color-text-secondary);" class="inline ml-1 flex-shrink-0"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></li>{% endif %}
                      {%- set previousPage = collections.menuItems | getPreviousCollectionItem(page) %}
-                     {%- if previousPage %}<li class="ml-0 pl-0"><svg height="24" fill="none" viewBox="0 0 24 24" stroke="#6B7280" class="transform rotate-180 inline mr-1 flex-shrink-0">
+                     {%- if previousPage %}<li class="ml-0 pl-0"><svg height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: var(--color-text-secondary);" class="transform rotate-180 inline mr-1 flex-shrink-0">
                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                     <a class="font-semibold text-gray-500 hover:text-gray-900" href="{{ previousPage.url | url }}">
+                     <a class="font-semibold" style="color: var(--color-text-secondary);" href="{{ previousPage.url | url }}">
                     {% if previousPage.data.eleventyNavigation.title %}{{  previousPage.data.eleventyNavigation.title }}{% else %}{{  previousPage.data.eleventyNavigation.key }}{% endif %} </a> </li>{% endif %}
                     </ul>
                     {% endif %}
@@ -37,7 +37,7 @@ section: page
             </div>    
             
             {% if site.enableTOC and toc %}
-            <div class="text-gray-500 font-semibold hidden xl:block sidebar sticky right-0 mt-12 -ml-56 w-56 h-full top-48">
+            <div class="font-semibold hidden xl:block sidebar sticky right-0 mt-12 -ml-56 w-56 h-full top-48" style="color: var(--color-text-secondary);">
             <small>ON THIS PAGE</small><br />
                 <aside class="font-normal">
                 {{ content | toc | safe }}

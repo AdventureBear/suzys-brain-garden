@@ -1,6 +1,6 @@
 ---
 layout: layouts/contact.njk
-title: Send a message 
+title: <contact />
 section: contact
 date: Last Modified
 permalink: /contact/index.html
