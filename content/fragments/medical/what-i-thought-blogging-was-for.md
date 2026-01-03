@@ -2,7 +2,7 @@
 title: "What I thought blogging was for"
 date: 2025-12-28
 permalink: /what-i-thought-blogging-was-for/
-
+prompt: "What I thought blogging was for"
 ---
 
 I thought blogging was a diary. 
@@ -40,11 +40,5 @@ And this was just one perspective as a single intern in the ICU in September on 
 Soon I'll be retiring, still thanking my own God that Crystal Meth was what united you and your family in communicating with the medical staff, and saved your son's life. 
 
 Sometimes I wonder if he ever started wearing a seatbelt.
-
----
-
-**Prompt**: What I thought blogging was for  
-**Date**: Dec 28, 2025
-
 
 

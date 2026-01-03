@@ -3,7 +3,7 @@ title: "Almost Settled"
 date: 2025-12-30
 permalink: /almost-settled/
 tags: ["prompt-response", "thoughts"]
-layout: layouts/page.njk
+prompt: "Something I noticed but didn't comment on"
 ---
 
 
@@ -22,7 +22,3 @@ Last week I walked in and must have had some expression that she recognized imme
 All of this went unsaid when she stood up, and kindly, gently said, *"Let's move it closer to the table"*.   
 
 
----
-
-**Prompt**: Something I noticed but didn't comment on
-**Date**: December 30, 2025

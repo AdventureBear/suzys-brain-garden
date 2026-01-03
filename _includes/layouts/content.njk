@@ -13,10 +13,10 @@ section: content
             {% endif %}
                 <article>
                 <h2 class="dark:text-gray-500 mt-0">{{ title }}</h2>
-                <div class="flex items-center justify-between text-sm text-gray-500 mb-6">
-                    <span>Published <time datetime="{{ page.date | machineDate }}">{{ page.date | readableDate }}</time></span>
-                    {% if site.enableEditButton == true %}
-                    <a class="text-xs text-gray-500 hover:text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 px-3 py-1 rounded transition-colors no-underline" target="_blank" rel="noopener noreferrer" href="{{ site.githubUrl }}/edit/{{ site.githubBranch }}/{{ page.inputPath }}">Edit</a>
+                <div class="text-sm text-gray-500 mb-6">
+                    <div>Published <time datetime="{{ page.date | machineDate }}">{{ page.date | readableDate }}</time></div>
+                    {% if prompt %}
+                    <div>Prompt: {{ prompt }}</div>
                     {% endif %}
                 </div>
                 <div class="self-center adjust  dark:text-gray-400">

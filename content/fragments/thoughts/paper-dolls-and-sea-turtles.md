@@ -3,6 +3,7 @@ title: "Paper Dolls and Sea Turtles"
 date: 2026-01-02
 permalink: /paper-dolls-and-sea-turtles/
 tags: ["swimming", "hawaii", "kona", "tsunami"]
+prompt: "A sound that repeated at fixed intervals"
 ---
 When: April 1, 2013  
 Where: Kailua-Kona, Hawaii  
@@ -133,13 +134,6 @@ So I learned two things that day.   The first is that the tsunami test is on the
 
 
 
-
-
----
-
-
-**Prompt**: A sound that repeated at fixed intervals
-**Date**: January 2, 2026
 
 
 

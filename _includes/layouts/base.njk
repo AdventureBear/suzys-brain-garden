@@ -1,8 +1,8 @@
 <!doctype html>
 <html {% if section %} data-current="{{ section }}"{% endif %} lang="en">
   {% include "components/head.njk" %}
-  <body>
-    <div id="app" class="h-screen bg-white dark:bg-gray-900">
+  <body class="bg-white dark:bg-gray-900">
+    <div id="app" class="min-h-screen flex flex-col">
       {% include "components/header.njk" %}
       {% if site.navigationStyle == "vertical" %}
       <nav id="navigation" class="fixed inset-y-0 overflow-x-hidden overflow-y-auto  hidden w:64 lg:w-72 mt-20 md:block  dark:bg-gray-900  flex-none top-0  px-4 md:px-8 w-64">
@@ -17,9 +17,9 @@
       </nav>
       {% endif %}
       {% if site.navigationStyle == 'horizontal' %}
-        <main id="main" class="dark:bg-gray-900 pt-16 sm:pt-18 md:pt-48">
+        <main id="main" class="flex-grow dark:bg-gray-900 pt-16 sm:pt-18 md:pt-48">
       {% else %}
-        <main id="main" class="dark:bg-gray-900 pt-16 sm:pt-18 md:pt-20 md:pl-64 lg:pl-72">
+        <main id="main" class="flex-grow dark:bg-gray-900 pt-16 sm:pt-18 md:pt-20 md:pl-64 lg:pl-72">
       {% endif %}
         {{ content | safe }}
         </main>

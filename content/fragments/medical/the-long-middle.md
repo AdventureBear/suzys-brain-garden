@@ -3,7 +3,6 @@ title: "The Long Middle"
 date: 2025-12-31
 prompt: "A place where people wait without sitting ↔ A place where people sit without waiting"
 tags: ["waiting"]
-layout: layouts/page.njk
 ---
 
 
@@ -27,7 +26,3 @@ I wanted not-waiting more until finally he was done and they let me see him.  He
 
 Like so many moments during those 2 1/2 years of him dealing with brain cancer...I can't even name the type because it looks so evil to me...I wanted a rewind button.   If only hed woken up and that leg worked, the following 2 1/2 years would have been so much easier for him, for us.    But we didn't now what was to come, we were just happy...I was happy...to be done waiting for that particular episode to end, only for a new cliffhanger to be revealed because of that leg that stopped working. 
 
----
-
-**Prompt**: A place where people wait without sitting
-**Date**: December 31, 2025
