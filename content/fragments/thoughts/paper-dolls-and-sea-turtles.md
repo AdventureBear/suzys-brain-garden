@@ -12,7 +12,7 @@ What:  Open water swimming
 Why:  End of camp open water swim before flying home.
 
 
-We entered the water at dig-me beach, and swam past past the end of the Kona Pier.  A string of white pencil buoys stretched into the distance parallel to the rocky shoreline, gradually getting further and further apart.  Our goal ws the first major bouy 0.6 miles from shore, named King's Bouy.   There and back is 1.2 miles.   From there the next bouy is a full kilometer away and markes the turnaround for the Kona Ironman World Championship swim of 2.4 miles.     
+We entered the water at dig me beach, and swam past past the end of the Kona Pier.  A string of white pencil buoys stretched into the distance parallel to the rocky shoreline, gradually getting further and further apart.  Our goal ws the first major bouy 0.6 miles from shore, named King's Bouy.   There and back is 1.2 miles.   From there the next bouy is a full kilometer away and markes the turnaround for the Kona Ironman World Championship swim of 2.4 miles.     
 
 My coaching partner Celeste and I had just finished a week long swim camp and it was just the two of us today, no students, no kayaks, no teaching. Nothing but me, she, the blue-green sea, and the fish-balls swimming below us in the crystal clear cold waters. 
 
@@ -60,20 +60,15 @@ I was starting to think I should turn around and get back to the beach, but Cele
 
 
 > "Is that the tsunami alarm?"
-
-
+>
 > "I think it is"
-
-
+>
 > "Should we go back?"
-
-
+>
 > "I think we should"
-
-
+>
 > "Why isn't anyone else seeming to head back in?"
-
-
+>
 > "Dunno.  Ready?"
 
 
@@ -120,10 +115,10 @@ They kept smiling.   Then giggling.  Then laughing.
 Finally they confessed...
 
 
-> "No, that was the monthly tsunami alarm test, they do it on the first of every month".
+"No, that was the monthly tsunami alarm test, they do it on the first of every month".
 
 
-So I learned two things that day.   The first is that the tsunami test is on the first of every month, and that swimming like a paper doll might save your life someday.
+So I learned two things that day.   The first is that the tsunami test is on the first of every month, and the second is that swimming like a paper doll might save your life someday.
 
 ## Links to Explore
 [Kona practice swim](https://forum.slowtwitch.com/t/practice-swim-on-the-kona-swim-course/542852/13)
