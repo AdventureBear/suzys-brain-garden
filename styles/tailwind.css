@@ -70,10 +70,14 @@
     border-right-color: var(--color-bg-secondary);
     filter: drop-shadow(-0.5px 0 0 var(--color-link));
   }
-  .dark .tag:hover,
-  .dark .tag:hover::before {
+  .dark .tag:hover {
     background-color: var(--color-bg);
+    border-color: var(--color-link);
+    border-left: none;
+  }
+  .dark .tag:hover::before {
     border-right-color: var(--color-bg);
+    filter: drop-shadow(-0.5px 0 0 var(--color-link));
   }
 
   /* Set up some default image behavior for nicer images */
