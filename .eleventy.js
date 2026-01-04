@@ -135,6 +135,28 @@ module.exports = function(eleventyConfig) {
    const searchIndex = require("./lib/collections/searchIndex");
    eleventyConfig.addCollection("searchIndex", searchIndex);
   
+   // Creates custom collection "tagList" - all unique tags with counts
+   eleventyConfig.addCollection("tagList", function(collection) {
+    let tagSet = new Map();
+    collection.getAll().forEach(item => {
+      if ("tags" in item.data) {
+        let tags = item.data.tags;
+        if (typeof tags === "string") {
+          tags = [tags];
+        }
+        tags.filter(tag => {
+          // Filter out special collections
+          return !["all", "nav", "post", "posts", "page", "pages", "tagList", "menuItems", "fragments", "builds"].includes(tag);
+        }).forEach(tag => {
+          tagSet.set(tag, (tagSet.get(tag) || 0) + 1);
+        });
+      }
+    });
+    // Convert to array of objects and sort alphabetically
+    return Array.from(tagSet, ([tag, count]) => ({ tag, count }))
+      .sort((a, b) => a.tag.localeCompare(b.tag));
+   });
+
    // Creates custom collection "menuItems"
    eleventyConfig.addCollection("menuItems", collection =>
     collection
