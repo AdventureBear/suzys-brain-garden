@@ -30,6 +30,51 @@
     color: var(--color-text);
   }
 
+  /* Tag/label styling for manifest */
+  .tag {
+    display: inline-block;
+    padding: 0.35rem 0.75rem 0.35rem 1rem;
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text);
+    text-decoration: none;
+    border-radius: 0 0.375rem 0.375rem 0;
+    position: relative;
+    margin-left: 0.5rem;
+    transition: all 0.15s ease;
+  }
+  .tag::before {
+    content: '';
+    position: absolute;
+    left: -0.5rem;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-top: 0.875rem solid transparent;
+    border-bottom: 0.875rem solid transparent;
+    border-right: 0.5rem solid var(--color-bg-secondary);
+  }
+  .tag:hover {
+    background-color: var(--color-border);
+  }
+  .tag:hover::before {
+    border-right-color: var(--color-border);
+  }
+  .dark .tag {
+    border: 1px solid var(--color-link);
+    border-left: none;
+  }
+  .dark .tag::before {
+    border-right-color: var(--color-bg-secondary);
+    /* Add pink border effect on left edge */
+    filter: drop-shadow(-1px 0 0 var(--color-link));
+  }
+  .dark .tag:hover {
+    background-color: var(--color-bg);
+  }
+  .dark .tag:hover::before {
+    border-right-color: var(--color-bg);
+  }
+
   /* Set up some default image behavior for nicer images */
   img {
     @apply w-auto shadow-md border-2 border-transparent;
