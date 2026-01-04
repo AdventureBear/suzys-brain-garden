@@ -44,7 +44,6 @@
     border-radius: 0 0.5rem 0.5rem 0;
     position: relative;
     margin-left: 0.75rem;
-    transition: all 0.15s ease;
   }
   .tag::before {
     content: '';
@@ -64,16 +63,16 @@
     border-right-color: var(--color-border);
   }
   .dark .tag {
-    box-shadow: inset 0 0 0 0.5px var(--color-link), inset -0.5px 0 0 0.5px var(--color-link);
+    border: 0.5px solid var(--color-link);
+    border-left: none;
   }
   .dark .tag::before {
     border-right-color: var(--color-bg-secondary);
     filter: drop-shadow(-0.5px 0 0 var(--color-link));
   }
-  .dark .tag:hover {
-    background-color: var(--color-bg);
-  }
+  .dark .tag:hover,
   .dark .tag:hover::before {
+    background-color: var(--color-bg);
     border-right-color: var(--color-bg);
   }
 
