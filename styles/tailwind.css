@@ -44,6 +44,7 @@
     border-radius: 0 0.5rem 0.5rem 0;
     position: relative;
     margin-left: 0.75rem;
+    transition: transform 0.15s ease, filter 0.15s ease;
   }
   .tag::before {
     content: '';
@@ -57,10 +58,9 @@
     border-right: 0.75rem solid var(--color-bg-secondary);
   }
   .tag:hover {
-    background-color: var(--color-border);
-  }
-  .tag:hover::before {
-    border-right-color: var(--color-border);
+    text-decoration: none;
+    transform: scale(1.08);
+    filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.15));
   }
   .dark .tag {
     border: 0.5px solid var(--color-link);
@@ -71,12 +71,11 @@
     filter: drop-shadow(-0.5px 0 0 var(--color-link));
   }
   .dark .tag:hover {
-    background-color: var(--color-bg);
-    border-color: var(--color-link);
-    border-left: none;
+    text-decoration: none;
+    transform: scale(1.08);
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4));
   }
   .dark .tag:hover::before {
-    border-right-color: var(--color-bg);
     filter: drop-shadow(-0.5px 0 0 var(--color-link));
   }
 
