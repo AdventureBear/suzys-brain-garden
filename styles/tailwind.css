@@ -58,7 +58,9 @@
     width: 0.7rem;
     background-color: var(--color-bg-secondary);
     clip-path: polygon(100% 0, 100% 100%, 0 50%);
-    filter: drop-shadow(-1px 0 0 var(--color-border));
+    filter:
+      drop-shadow(-1px -1px 0 var(--color-border))
+      drop-shadow(-1px 1px 0 var(--color-border));
   }
   .tag:hover, .tag:hover::before {
     text-decoration: none !important;
@@ -71,14 +73,18 @@
     border-color: var(--color-link);
   }
   .dark .tag::before {
-    filter: drop-shadow(-1px 0 0 var(--color-link));
+    filter:
+      drop-shadow(-1px -1px 0 var(--color-link))
+      drop-shadow(-1px 1px 0 var(--color-link));
   }
   .dark .tag:hover {
     transform: scale(1.08);
     filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4));
   }
   .dark .tag:hover::before {
-    filter: drop-shadow(-1px 0 0 var(--color-link));
+    filter:
+      drop-shadow(-1px -1px 0 var(--color-link))
+      drop-shadow(-1px 1px 0 var(--color-link));
   }
 
   /* Set up some default image behavior for nicer images */
