@@ -15,12 +15,12 @@ app.get('/api/prompts', (req, res) => {
   res.json(prompts);
 });
 
-// Get existing folders in content/writing/
+// Get existing folders in content/fragments/
 app.get('/api/folders', (req, res) => {
-  const writingPath = path.join(__dirname, '../../content/writing');
+  const fragmentsPath = path.join(__dirname, '../../content/fragments');
 
   try {
-    const items = fs.readdirSync(writingPath, { withFileTypes: true });
+    const items = fs.readdirSync(fragmentsPath, { withFileTypes: true });
     const folders = items
       .filter(item => item.isDirectory())
       .map(item => item.name);
@@ -40,7 +40,7 @@ app.get('/api/folder-tags', (req, res) => {
     return res.json({ tags: [] });
   }
 
-  const jsonPath = path.join(__dirname, `../../content/writing/${subfolder}/${subfolder}.json`);
+  const jsonPath = path.join(__dirname, `../../content/fragments/${subfolder}/${subfolder}.json`);
 
   try {
     if (fs.existsSync(jsonPath)) {
@@ -74,7 +74,7 @@ app.post('/api/save', (req, res) => {
 
   try {
     // Determine the target folder
-    let targetFolder = 'writing';
+    let targetFolder = 'fragments';
     let targetSubfolder = subfolder;
 
     // Handle new subfolder creation
@@ -99,11 +99,11 @@ app.post('/api/save', (req, res) => {
     const filename = `${slug}.md`;
     const filePath = path.join(fullPath, filename);
 
-    // Generate frontmatter with title, tags, and permalink
-    const frontmatter = generateFrontmatter(title, date, slug, tags);
+    // Generate frontmatter with title, tags, permalink, and prompt
+    const frontmatter = generateFrontmatter(title, date, slug, tags, prompt);
 
-    // Combine frontmatter and content
-    const fileContent = `${frontmatter}\n${content}\n\n---\n\n**Prompt**: ${prompt}\n**Date**: ${date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}\n`;
+    // Combine frontmatter and content (no prompt/date at end)
+    const fileContent = `${frontmatter}\n${content}\n`;
 
     // Write file
     fs.writeFileSync(filePath, fileContent, 'utf8');
@@ -138,7 +138,7 @@ function generateSlugFromTitle(title) {
 }
 
 // Helper function to generate frontmatter
-function generateFrontmatter(title, date, slug, tags = []) {
+function generateFrontmatter(title, date, slug, tags = [], prompt = '') {
   const dateStr = date.toISOString().split('T')[0];
 
   // Use provided tags or default to empty array
@@ -152,6 +152,7 @@ title: "${title}"
 date: ${dateStr}
 permalink: ${permalink}
 tags: [${tagsArray.map(t => `"${t}"`).join(', ')}]
+prompt: "${prompt}"
 ---`;
 }
 
