@@ -52,13 +52,12 @@
   .tag::after {
     content: '';
     position: absolute;
-    right: 100%;
+    right: calc(100% - 1px);
     top: -1px;
     bottom: -1px;
-    width: calc(0.7rem + 1px);
+    width: calc(0.7rem + 2px);
     background-color: var(--color-border);
     clip-path: polygon(100% 0, 100% 100%, 0 50%);
-    z-index: -1;
   }
   /* Angled left edge - fill layer */
   .tag::before {
@@ -70,6 +69,7 @@
     width: 0.7rem;
     background-color: var(--color-bg-secondary);
     clip-path: polygon(100% 0, 100% 100%, 0 50%);
+    z-index: 1;
   }
   .tag:hover, .tag:hover::before {
     text-decoration: none !important;
