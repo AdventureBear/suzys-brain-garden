@@ -14,8 +14,9 @@ Threads that surface more than once.
 Follow one to see where it leads.
 </pre>
 <hr />
-<div class="space-y-1 mt-8">
-{% for item in collections.tagList %}
-<div><a href="/manifest/{{ item.tag | slugify }}/">{{ item.tag }}</a> <span style="color: var(--color-text-secondary);">({{ item.count }})</span></div>
+<div class="flex flex-wrap gap-4 mt-8">
+{% assign shuffled = collections.tagList | sample: collections.tagList.size %}
+{% for item in shuffled %}
+<a href="/manifest/{{ item.tag | slugify }}/" style="color: var(--color-text);">{{ item.tag }}</a>
 {% endfor %}
 </div>
