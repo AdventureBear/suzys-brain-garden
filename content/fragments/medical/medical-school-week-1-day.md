@@ -1,11 +1,11 @@
 ---
-title: "Medical school, week 1, day"
+title: "Medical school, week 1"
 date: 2026-01-15
-permalink: /medical-school-week-1-day/
+permalink: /medical-school-week-1/
 tags: ["medical", "education"]
 prompt: "An arrangement that reveals hierarchy"
 ---
-Medical school, week 1, day 1. 
+Medical school, week 1 
 
 Designed to inspire and excite. Each day that week is a 50 minute interactive lecture series titled, "Life without a ...",   The two I remember are legs and heart.   A patient with prosthetic limbs on both legs walked out on stage, stood and faced us, placed his hands behind is back and smiled.   A patient with a heart transplant tells us how she warms up for a run to increase blood flow to her legs, since the nerves that excite the heart and increase the heart rate were severed during the surgery. 
 
