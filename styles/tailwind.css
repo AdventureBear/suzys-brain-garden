@@ -48,28 +48,17 @@
     margin-left: 0.7rem;
     transition: transform 0.15s ease, filter 0.15s ease;
   }
-  /* Angled left edge - border layer */
-  .tag::after {
-    content: '';
-    position: absolute;
-    right: calc(100% - 1px);
-    top: -1px;
-    bottom: -1px;
-    width: calc(0.7rem + 2px);
-    background-color: var(--color-border);
-    clip-path: polygon(100% 0, 100% 100%, 0 50%);
-  }
-  /* Angled left edge - fill layer */
+  /* Angled left edge */
   .tag::before {
     content: '';
     position: absolute;
     right: 100%;
-    top: 0;
-    bottom: 0;
+    top: -1px;
+    bottom: -1px;
     width: 0.7rem;
     background-color: var(--color-bg-secondary);
     clip-path: polygon(100% 0, 100% 100%, 0 50%);
-    z-index: 1;
+    filter: drop-shadow(-1px 0 0 var(--color-border));
   }
   .tag:hover, .tag:hover::before {
     text-decoration: none !important;
@@ -81,8 +70,8 @@
   .dark .tag {
     border-color: var(--color-link);
   }
-  .dark .tag::after {
-    background-color: var(--color-link);
+  .dark .tag::before {
+    filter: drop-shadow(-1px 0 0 var(--color-link));
   }
   .dark .tag:hover {
     transform: scale(1.08);
